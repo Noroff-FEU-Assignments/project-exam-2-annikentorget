@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,OAAO,CAAC;EACJ,gBAAgB,EAAE,8BAA8B;EAChD,mBAAmB,EAAE,MAAM;EAC3B,eAAe,EAAE,KAAK;EAGtB,MAAM,EAAE,IAAI;CACf;;ACPD,AAAA,OAAO,CAAC;EACJ,aAAa,EAAE,MAAM;EACrB,YAAY,EAAE,MAAM;CACvB",
+    "sources": [
+        "../src/sass/main.scss",
+        "../src/sass/partials/_banner.scss",
+        "../src/sass/partials/_nav.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}

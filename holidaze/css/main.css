@@ -1,0 +1,12 @@
+.banner {
+  background-image: url("../../images/banner.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 80vh;
+}
+
+.navbar {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+/*# sourceMappingURL=main.css.map */
