@@ -1,13 +1,11 @@
 import Heading from '../components/layout/Heading';
-import { useHistory, Link } from 'react-router-dom';
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BASE_URL, CONTACT_PATH } from '../utils/constants';
-import Hotel from '../components/layout/Hotel';
+import { BASE_URL, CONTACT_PATH, BOOKING_PATH } from '../utils/constants';
 
 const Enquiries = () => {
   const [contact, setContact] = useState(null);
-  const [render, setRender] = useState();
+  const [booking, setBooking] = useState(null);
 
   useEffect(() => {
     const getContact = async () => {
@@ -20,6 +18,19 @@ const Enquiries = () => {
       }
     };
     getContact();
+  }, []);
+
+  useEffect(() => {
+    const getBooking = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}${BOOKING_PATH}`);
+        console.log(response)
+        setBooking(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getBooking();
   }, []);
 
   if (!contact) {
@@ -38,6 +49,20 @@ const Enquiries = () => {
                 <p>{contact.lastname}</p>
                 <p>{contact.email}</p>
                 <p>{contact.message}</p>
+            </div>
+          </>
+        );
+      })}
+      {booking.map(booking => {
+        return (
+          <>
+            <div key={booking.id}>
+                <p>{booking.name}</p>
+                <p>{booking.lastname}</p>
+                <p>{booking.email}</p>
+                <p>{booking.hotel}</p>
+                <p>{booking.guests}</p>
+                <p>{booking.date}</p>
             </div>
           </>
         );

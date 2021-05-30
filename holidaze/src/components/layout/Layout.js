@@ -19,6 +19,7 @@ import Login from '../../pages/Login';
 import Details from '../../pages/Details';
 import AddHotel from '../../pages/AddHotel';
 import Enquiries from '../../pages/Enquiries';
+import Booking from '../../pages/Booking';
 
 
 const Layout = () => {
@@ -27,7 +28,7 @@ const Layout = () => {
 
     function logout() {
         setAuth(null);
-        //history.push('/');
+        history.push('/');
     }
 
     return(
@@ -36,11 +37,12 @@ const Layout = () => {
                 <Navbar variant='dark' expand='lg'>
                     <Navbar.Brand href='/'><img className="logo" src={logo} alt="logo"></img></Navbar.Brand>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
-                    <Navbar.Collapse id='basic-navbar-nav'>
+                    <Navbar.Collapse className='justify-content-end' id='basic-navbar-nav'>
                         <Nav className='mr-auto'>
                             <Nav.Link href='/'>Home</Nav.Link>
                             <Nav.Link href='/hotels'>Hotels</Nav.Link>
                             <Nav.Link href='/contact'>Contact</Nav.Link>
+                            <Nav.Link href='/booking'>Booking</Nav.Link>
                             {auth ? (
                                 <>
                                     <Link className="nav__login" to='/addhotel'>Add Hotel</Link>{' '}
@@ -61,6 +63,7 @@ const Layout = () => {
                         <Route path ='/hotels/:id' component={Details} />
                         <Route path ='/addhotel' component={AddHotel} />
                         <Route path ='/enquiries' component={Enquiries} />
+                        <Route path ='/booking' component={Booking} />
                     </Switch>
             </Router>
         </AuthProvider>

@@ -1,9 +1,7 @@
 import Heading from '../components/layout/Heading';
-import { useHistory, Link } from 'react-router-dom';
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BASE_URL, HOTELS_PATH } from '../utils/constants';
-import Hotel from '../components/layout/Hotel';
 import { useParams } from 'react-router-dom';
 
 const Details = () => {
@@ -23,9 +21,13 @@ const Details = () => {
     getHotel();
   }, [id]);
 
+  if (!hotel) {
+    return <h3>Loading...</h3>;
+}
+
   return (
     <>
-      <Heading title='Details' />
+      <Heading title={hotel.name} />
     </>
   );
 };

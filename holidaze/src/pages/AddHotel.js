@@ -1,4 +1,4 @@
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import Hotel from '../components/layout/Hotel';
@@ -12,7 +12,6 @@ const AddHotel = () => {
     const [auth] = useContext(AuthContext);
     const history = useHistory();
     const [hotel, setHotel] = useState(null);
-    const { id } = useParams();
 
     const [submitting, setSubmitting] = useState(false)
     const [postError, setPostError] = useState(null)

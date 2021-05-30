@@ -1,13 +1,12 @@
 import Heading from '../components/layout/Heading';
-import { useHistory, Link } from 'react-router-dom';
-import { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BASE_URL, HOTELS_PATH } from '../utils/constants';
 import Hotel from '../components/layout/Hotel';
 
 const Hotels = () => {
   const [hotels, setHotels] = useState(null);
-  const [render, setRender] = useState();
 
   useEffect(() => {
     const getHotels = async () => {
@@ -33,7 +32,7 @@ const Hotels = () => {
       {hotels.map(hotel => {
         return (
           <>
-            <Link key={hotel.id} to={`/hotels/${hotel.id}`}>
+            <Link className='hotel__link' key={hotel.id} to={`/hotels/${hotel.id}`}>
               <Hotel {...hotel} />
             </Link>
           </>
