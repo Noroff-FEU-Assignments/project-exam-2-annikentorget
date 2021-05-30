@@ -1,12 +1,16 @@
 import Navbar from 'react-bootstrap/Navbar';
 import { AuthProvider } from '../../context/AuthContext';
 import logo from '../../images/logo.png';
+import AuthContext from '../../context/AuthContext';
+import { useContext } from 'react';
 
 import Nav from 'react-bootstrap/Nav';
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    useHistory,
+    Link
   } from 'react-router-dom';
 import Home from '../../pages/Home';
 import Hotels from '../../pages/Hotels';
@@ -16,6 +20,14 @@ import Details from '../../pages/Details';
 import AddHotel from '../../pages/AddHotel';
 
 const Layout = () => {
+    const [auth, setAuth] = useContext(AuthContext);
+    const history = useHistory();
+
+    function logout() {
+        setAuth(null);
+        history.push('/');
+    }
+
     return(
         <AuthProvider>
             <Router>
@@ -27,6 +39,14 @@ const Layout = () => {
                             <Nav.Link href='/'>Home</Nav.Link>
                             <Nav.Link href='/hotels'>Hotels</Nav.Link>
                             <Nav.Link href='/contact'>Contact</Nav.Link>
+                            {auth ? (
+                                <>
+                                    <Nav.Link to='/addhotel'></Nav.Link>
+                                    <button onClick={logout}>Log out</button>
+                                </>
+                            ) : (
+                                <Link to='/login'>Login</Link>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

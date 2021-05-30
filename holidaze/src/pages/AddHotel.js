@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import AuthContext from '../context/AuthContext';
 import Hotel from '../components/layout/Hotel';
 import { BASE_URL, HOTELS_PATH } from '../utils/constants';
 import { useForm } from 'react-hook-form';
@@ -8,6 +9,8 @@ import { productSchema } from '../utils/schemas';
 import axios from 'axios';
 
 const AddHotel = () => {
+    const [auth] = useContext(AuthContext);
+    const history = useHistory();
     const [hotel, setHotel] = useState(null);
     const { id } = useParams();
 
@@ -35,6 +38,10 @@ const AddHotel = () => {
             setSubmitting(false);
         }
     };
+
+    if(!auth) {
+        history.push('/login');
+    }
 
     return (
         <>
