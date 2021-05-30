@@ -18,6 +18,8 @@ import Contact from '../../pages/Contact';
 import Login from '../../pages/Login';
 import Details from '../../pages/Details';
 import AddHotel from '../../pages/AddHotel';
+import Enquiries from '../../pages/Enquiries';
+
 
 const Layout = () => {
     const [auth, setAuth] = useContext(AuthContext);
@@ -25,7 +27,7 @@ const Layout = () => {
 
     function logout() {
         setAuth(null);
-        history.push('/');
+        //history.push('/');
     }
 
     return(
@@ -41,11 +43,12 @@ const Layout = () => {
                             <Nav.Link href='/contact'>Contact</Nav.Link>
                             {auth ? (
                                 <>
-                                    <Nav.Link to='/addhotel'></Nav.Link>
+                                    <Link className="nav__login" to='/addhotel'>Add Hotel</Link>{' '}
+                                    <Link className="nav__login" to='/enquiries'>Enquiries</Link>{' '}
                                     <button onClick={logout}>Log out</button>
                                 </>
                             ) : (
-                                <Link to='/login'>Login</Link>
+                                <Link className="nav__login" to='/login'>Login</Link>
                             )}
                         </Nav>
                     </Navbar.Collapse>
@@ -57,6 +60,7 @@ const Layout = () => {
                         <Route path ='/login' component={Login} />
                         <Route path ='/hotels/:id' component={Details} />
                         <Route path ='/addhotel' component={AddHotel} />
+                        <Route path ='/enquiries' component={Enquiries} />
                     </Switch>
             </Router>
         </AuthProvider>

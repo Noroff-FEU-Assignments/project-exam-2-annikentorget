@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { BASE_URL, AUTH_PATH } from '../utils/constants';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 
 const loginSchema = yup.object().shape({
@@ -17,12 +18,13 @@ const Login = () => {
   const [loginError, setLoginError] = useState(null);
 
   const [, setAuth] = useContext(AuthContext);
+  const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(loginSchema)
   });
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     setSubmitting(true);
     setLoginError(null);
 
@@ -31,12 +33,13 @@ const Login = () => {
     try {
       const response = await axios.post(`${BASE_URL}${AUTH_PATH}`, data);
       console.log('response', response.data);
-      setAuth(response.data);
+      setAuth(response);
     } catch (error) {
       console.log('error', error);
       setLoginError(error.toString());
     } finally {
       setSubmitting(false);
+      history.push('/');
     }
   };
 

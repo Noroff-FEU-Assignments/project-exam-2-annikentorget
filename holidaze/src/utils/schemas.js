@@ -5,9 +5,16 @@ export const loginSchema = yup.object().shape({
     password: yup.string().required('Please enter your password')
 });
 
-export const productSchema = yup.object().shape({
+export const contactSchema = yup.object().shape({
+    name: yup.string().required('Please provide a first name'),
+    lastname: yup.string().required('Please provide a last name'),
+    email: yup.string().required('Please provide a valid email address'),
+    message: yup.string().required('Please provide a message')
+});
+
+export const hotelSchema = yup.object().shape({
     title: yup.string().required('Please provide a title'),
     price: yup.number().required('Please provide a price'),
-    description: yup.string().required('Please provide a description'),
-    image_url: yup.string().required('Please provide an image url')
+    description: yup.string().required('Please provide description'),
+    image_url: yup.string().required('Please provide an image URL')
 });

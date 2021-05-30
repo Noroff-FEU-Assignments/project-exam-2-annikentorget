@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { BASE_URL, CONTACT_PATH } from '../utils/constants';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { productSchema } from '../utils/schemas';
+import { contactSchema } from '../utils/schemas';
 import axios from 'axios';
 
 const Contact = () => {
@@ -15,7 +15,7 @@ const Contact = () => {
     const [success, setSuccess] = useState(null);
 
      const { register, handleSubmit, errors } = useForm({
-       resolver: yupResolver(productSchema)
+       resolver: yupResolver(contactSchema)
     });
 
     const onSubmit = async data => {
@@ -46,8 +46,9 @@ const Contact = () => {
                             name='name'
                             placeholder='First name'
                             ref={register}
+                            type='text'
                         />
-                        {errors.title && <p>{errors.title.message}</p>}
+                        {errors.name && <p>{errors.name.message}</p>}
                     </div>
 
                     <div>
@@ -55,33 +56,35 @@ const Contact = () => {
                             name='lastname'
                             placeholder='Last name'
                             ref={register}
-                        />
-                        {errors.price && <p>{errors.price.message}</p>}
-                    </div>
-                    <div>
-                        <textarea
-                            name='description'
-                            placeholder='Description'
-                            ref={register}
                             type='text'
                         />
-                        {errors.description && <p>{errors.description.message}</p>}
+                        {errors.lastname && <p>{errors.lastname.message}</p>}
                     </div>
                     <div>
                         <input
-                            name='image_url'
-                            placeholder='Image URL'
+                            name='email'
+                            placeholder='Email'
                             ref={register}
                             type='text'
                         />
-                        {errors.image_url && <p>{errors.image_url.message}</p>}
+                        {errors.email && <p>{errors.email.message}</p>}
+                    </div>
+                    <div>
+                        <textarea
+                            name='message'
+                            placeholder='Message'
+                            ref={register}
+                            type='text'
+                        />
+                        {errors.message && <p>{errors.message.message}</p>}
                     </div>
 
                     <button type='submit'>
-                        {submitting ? 'Adding ...' : 'Send'}
+                        {submitting ? 'Sending ...' : 'Send'}
                     </button>
                 </fieldset>
             </form>
+            {success ? <p>Message was sent.</p> : null}
         </>
     );
 };

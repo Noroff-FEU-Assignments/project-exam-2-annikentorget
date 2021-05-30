@@ -5,7 +5,7 @@ import Hotel from '../components/layout/Hotel';
 import { BASE_URL, HOTELS_PATH } from '../utils/constants';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { productSchema } from '../utils/schemas';
+import { hotelSchema } from '../utils/schemas';
 import axios from 'axios';
 
 const AddHotel = () => {
@@ -19,7 +19,7 @@ const AddHotel = () => {
     const [success, setSuccess] = useState(null);
 
      const { register, handleSubmit, errors } = useForm({
-       resolver: yupResolver(productSchema)
+       resolver: yupResolver(hotelSchema)
     });
 
     const onSubmit = async data => {
@@ -45,7 +45,7 @@ const AddHotel = () => {
 
     return (
         <>
-            <h2>Add</h2>
+            <h2>Add hotel</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {postError && <p>{postError}</p>}
                 <fieldset disabled={submitting}>
@@ -87,7 +87,7 @@ const AddHotel = () => {
                     </div>
 
                     <button type='submit'>
-                        {submitting ? 'Adding ...' : 'Add'}
+                        {submitting ? 'Adding ...' : 'Add hotel'}
                     </button>
                 </fieldset>
             </form>
