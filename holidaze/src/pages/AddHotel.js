@@ -44,11 +44,12 @@ const AddHotel = () => {
 
     return (
         <>
-            <h2>Add hotel</h2>
+            <h2 className='heading'>Add hotel</h2>
+            <div className='formbox'>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {postError && <p>{postError}</p>}
                 <fieldset disabled={submitting}>
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='title'
                             placeholder='Title'
@@ -57,7 +58,7 @@ const AddHotel = () => {
                         {errors.title && <p>{errors.title.message}</p>}
                     </div>
 
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='price'
                             placeholder='Price'
@@ -66,7 +67,7 @@ const AddHotel = () => {
                         />
                         {errors.price && <p>{errors.price.message}</p>}
                     </div>
-                    <div>
+                    <div className='form__input'>
                         <textarea
                             name='description'
                             placeholder='Description'
@@ -75,7 +76,7 @@ const AddHotel = () => {
                         />
                         {errors.description && <p>{errors.description.message}</p>}
                     </div>
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='image_url'
                             placeholder='Image URL'
@@ -92,6 +93,7 @@ const AddHotel = () => {
             </form>
             {success ? <p>Listing og {hotel.title} was added.</p> : null}
             <Hotel {...hotel} />
+            </div>
         </>
     );
 };

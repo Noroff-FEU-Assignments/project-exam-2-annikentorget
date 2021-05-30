@@ -28,7 +28,6 @@ const Layout = () => {
 
     function logout() {
         setAuth(null);
-        history.push('/');
     }
 
     return(

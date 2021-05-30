@@ -1,5 +1,5 @@
 const Heading = ({ title }) => {
-    return <h1>{title}</h1>;
+    return <h2 className='heading'>{title}</h2>;
   };
   
   export default Heading;

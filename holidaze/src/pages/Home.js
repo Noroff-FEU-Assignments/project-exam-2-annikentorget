@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BASE_URL, HOTELS_PATH } from '../utils/constants';
 import axios from 'axios';
-import Hotel from '../components/layout/Hotel';
 
 const Home = () => {
   const [hotels, setHotels] = useState(null);

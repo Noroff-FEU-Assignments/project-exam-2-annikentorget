@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { BASE_URL, BOOKING_PATH } from '../utils/constants';
 import { useForm } from 'react-hook-form';
@@ -8,7 +7,6 @@ import axios from 'axios';
 
 const Booking = () => {
     const [booking, setBooking] = useState(null);
-    const { id } = useParams();
 
     const [submitting, setSubmitting] = useState(false)
     const [postError, setPostError] = useState(null)
@@ -37,11 +35,12 @@ const Booking = () => {
 
     return (
         <>
-            <h2>Booking form</h2>
+            <h2 className='heading'>Booking form</h2>
+            <div className='formbox'>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {postError && <p>{postError}</p>}
                 <fieldset disabled={submitting}>
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='name'
                             placeholder='First name'
@@ -51,7 +50,7 @@ const Booking = () => {
                         {errors.name && <p>{errors.name.message}</p>}
                     </div>
 
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='lastname'
                             placeholder='Last name'
@@ -60,7 +59,7 @@ const Booking = () => {
                         />
                         {errors.lastname && <p>{errors.lastname.message}</p>}
                     </div>
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='email'
                             placeholder='Email'
@@ -69,7 +68,7 @@ const Booking = () => {
                         />
                         {errors.email && <p>{errors.email.message}</p>}
                     </div>
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='hotel'
                             placeholder='Hotel name'
@@ -78,7 +77,7 @@ const Booking = () => {
                         />
                         {errors.hotel && <p>{errors.hotel.message}</p>}
                     </div>
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='guests'
                             placeholder='Number of guests'
@@ -87,7 +86,7 @@ const Booking = () => {
                         />
                         {errors.guests && <p>{errors.guests.message}</p>}
                     </div>
-                    <div>
+                    <div className='form__input'>
                         <textarea
                             name='date'
                             placeholder='Date of booking'
@@ -103,6 +102,7 @@ const Booking = () => {
                 </fieldset>
             </form>
             {success ? <p>Thank you for booking.</p> : null}
+            </div>
         </>
     );
 };

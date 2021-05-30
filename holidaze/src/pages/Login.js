@@ -6,6 +6,7 @@ import { BASE_URL, AUTH_PATH } from '../utils/constants';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 import { useHistory } from 'react-router-dom';
+import Heading from '../components/layout/Heading';
 
 
 const loginSchema = yup.object().shape({
@@ -45,10 +46,12 @@ const Login = () => {
 
   return (
     <>
+    <Heading title='Logg inn' />
+      <div className='formbox'>
       <form onSubmit={handleSubmit(onSubmit)}>
         {loginError && <p>{loginError}</p>}
         <fieldset disabled={submitting}>
-          <div>
+          <div className='form__input'>
             <input name='identifier'
             placeholder='Username' 
             ref={register}
@@ -57,7 +60,7 @@ const Login = () => {
             {errors.identifier && <p>{errors.identifier.message}</p>}
           </div>
 
-          <div>
+          <div className='form__input'>
             <input
               name='password'
               placeholder='Password'
@@ -69,6 +72,7 @@ const Login = () => {
           <button type='submit'>{submitting ? 'Loggin in...' : 'Login'}</button>
         </fieldset>
       </form>
+      </div>
     </>
   );
 };

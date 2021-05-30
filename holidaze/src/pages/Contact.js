@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { BASE_URL, CONTACT_PATH } from '../utils/constants';
 import { useForm } from 'react-hook-form';
@@ -8,7 +7,6 @@ import axios from 'axios';
 
 const Contact = () => {
     const [contact, setContact] = useState(null);
-    const { id } = useParams();
 
     const [submitting, setSubmitting] = useState(false)
     const [postError, setPostError] = useState(null)
@@ -37,11 +35,12 @@ const Contact = () => {
 
     return (
         <>
-            <h2>Contact form</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <h2 className='heading'>Contact form</h2>
+            <div className='formbox'>
+            <form className='form' onSubmit={handleSubmit(onSubmit)}>
                 {postError && <p>{postError}</p>}
                 <fieldset disabled={submitting}>
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='name'
                             placeholder='First name'
@@ -51,7 +50,7 @@ const Contact = () => {
                         {errors.name && <p>{errors.name.message}</p>}
                     </div>
 
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='lastname'
                             placeholder='Last name'
@@ -60,7 +59,7 @@ const Contact = () => {
                         />
                         {errors.lastname && <p>{errors.lastname.message}</p>}
                     </div>
-                    <div>
+                    <div className='form__input'>
                         <input
                             name='email'
                             placeholder='Email'
@@ -69,7 +68,7 @@ const Contact = () => {
                         />
                         {errors.email && <p>{errors.email.message}</p>}
                     </div>
-                    <div>
+                    <div className='form__input'>
                         <textarea
                             name='message'
                             placeholder='Message'
@@ -84,7 +83,9 @@ const Contact = () => {
                     </button>
                 </fieldset>
             </form>
+            
             {success ? <p>Message was sent.</p> : null}
+        </div>
         </>
     );
 };
