@@ -13,6 +13,7 @@ import Hotels from '../../pages/Hotels';
 import Contact from '../../pages/Contact';
 import Login from '../../pages/Login';
 import Details from '../../pages/Details';
+import AddHotel from '../../pages/AddHotel';
 
 const Layout = () => {
     return(
@@ -35,6 +36,7 @@ const Layout = () => {
                         <Route path='/contact' component={Contact} />
                         <Route path ='/login' component={Login} />
                         <Route path ='/hotels/:id' component={Details} />
+                        <Route path ='/addhotel' component={AddHotel} />
                     </Switch>
             </Router>
         </AuthProvider>

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { BASE_URL, HOTELS_PATH } from '../utils/constants';
 import axios from 'axios';
 import Hotel from '../components/layout/Hotel';
-import { productSchema } from '../utils/schemas';
 
 const Home = () => {
   const [hotels, setHotels] = useState(null);
@@ -25,19 +24,10 @@ const Home = () => {
       <div className="banner">
         <h1 className="banner__heading">
           Bergen by er nydelig!
-          <br></br>
+          <br />
           Finn plass å bo her
         </h1>
       </div>
-      {hotels.map(hotel => {
-        return (
-          <>
-            <div key={hotel.id}>
-              <Hotel {...Hotel} />
-            </div>
-          </>
-        )
-      })}
     </>
   );
 };

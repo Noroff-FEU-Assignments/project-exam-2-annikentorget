@@ -22,10 +22,6 @@ const Hotels = () => {
     getHotels();
   }, []);
 
-//  if(!auth) {
-//  history.push('/login');
-//  }
-
   if (!hotels) {
     return <h3>Loading...</h3>
   }
