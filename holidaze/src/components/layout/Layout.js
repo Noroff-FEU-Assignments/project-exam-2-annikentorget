@@ -46,7 +46,7 @@ const Layout = () => {
                                 <>
                                     <Link className="nav__login" to='/addhotel'>Add Hotel</Link>{' '}
                                     <Link className="nav__login" to='/enquiries'>Enquiries</Link>{' '}
-                                    <button onClick={logout}>Log out</button>
+                                    <button className='logout__button' onClick={logout}>Log out</button>
                                 </>
                             ) : (
                                 <Link className="nav__login" to='/login'>Login</Link>

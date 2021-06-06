@@ -44,7 +44,7 @@ const Enquiries = () => {
       {contact.map(contact => {
         return (
           <>
-            <div key={contact.id}>
+            <div className='enquiry__box' key={contact.id}>
                 <p>{contact.name}</p>
                 <p>{contact.lastname}</p>
                 <p>{contact.email}</p>
@@ -56,7 +56,7 @@ const Enquiries = () => {
       {booking.map(booking => {
         return (
           <>
-            <div key={booking.id}>
+            <div className='enquiry__box' key={booking.id}>
                 <p>{booking.name}</p>
                 <p>{booking.lastname}</p>
                 <p>{booking.email}</p>
